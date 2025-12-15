@@ -1,0 +1,15 @@
+components/sections/Hero.tsx(1,12): error TS1136: Property assignment expected.
+components/sections/Hero.tsx(1,27): error TS1005: ';' expected.
+components/sections/Hero.tsx(1,33): error TS1128: Declaration or statement expected.
+components/sections/Hero.tsx(2,12): error TS1136: Property assignment expected.
+components/sections/Hero.tsx(2,27): error TS1005: ';' expected.
+components/sections/Hero.tsx(2,32): error TS1128: Declaration or statement expected.
+components/sections/Hero.tsx(3,15): error TS1136: Property assignment expected.
+components/sections/Hero.tsx(3,32): error TS1128: Declaration or statement expected.
+components/sections/Hero.tsx(6,21): error TS2657: JSX expressions must have one parent element.
+components/sections/Hero.tsx(13,17): error TS1128: Declaration or statement expected.
+components/sections/Hero.tsx(31,13): error TS1128: Declaration or statement expected.
+components/sections/Hero.tsx(33,13): error TS2657: JSX expressions must have one parent element.
+components/sections/Hero.tsx(35,9): error TS1128: Declaration or statement expected.
+components/sections/Hero.tsx(36,5): error TS1109: Expression expected.
+components/sections/Hero.tsx(37,1): error TS1128: Declaration or statement expected.
