@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
-import { SpringMouseFollow } from "@/components/ui/mouse-follow-animations";
-import Cursor from "../components/ui/inverted-cursor";
+
+
 import { Footer } from "../components/ui/footer-taped-design";
 import { Toaster } from "react-hot-toast";
 
@@ -32,12 +32,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={outfit.className}>
         <Navbar />
-        <main className="relative z-10">
+        <main className="relative z-10 pt-32">
           {children}
         </main>
         <Footer />
-        <Cursor />
-        <SpringMouseFollow />
+
+
         <Toaster
           position="top-right"
           toastOptions={{

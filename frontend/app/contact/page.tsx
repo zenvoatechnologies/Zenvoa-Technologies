@@ -3,11 +3,13 @@
 import type { Metadata } from "next";
 import { ContactSection } from "@/components/ui/contact";
 import { LocationMap } from "@/components/ui/expand-map";
+import { SuccessModal } from "@/components/ui/success-modal";
 import toast from "react-hot-toast";
 import { useState } from "react";
 
 export default function ContactPage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
 
     const handleFormSubmit = async (data: any) => {
         setIsSubmitting(true);
@@ -26,7 +28,7 @@ export default function ContactPage() {
             const result = await response.json();
 
             if (response.ok && result.success) {
-                toast.success(result.message || 'Thank you for contacting us! We will get back to you soon.');
+                setShowSuccess(true);
                 return true; // Signal success to form component
             } else {
                 toast.error(result.message || 'Something went wrong. Please try again.');
@@ -43,6 +45,13 @@ export default function ContactPage() {
 
     return (
         <div className="relative">
+            {/* Success Modal */}
+            <SuccessModal
+                isOpen={showSuccess}
+                onClose={() => setShowSuccess(false)}
+                message="Thank you for contacting us!"
+            />
+
             {/* Main Contact Form */}
             <ContactSection
                 title="We can turn your dream project into reality"

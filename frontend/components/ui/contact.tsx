@@ -18,9 +18,9 @@ interface ContactSectionProps {
 }
 
 const defaultSocialLinks = [
-  { id: '1', name: 'Instagram', icon: <Instagram className="h-4 w-4" />, href: 'https://instagram.com/zenvoa' },
-  { id: '2', name: 'LinkedIn', icon: <Linkedin className="h-4 w-4" />, href: '#linkedin' },
-  { id: '3', name: 'Github', icon: <Github className="h-4 w-4" />, href: '#github' },
+  { id: '1', name: 'Instagram', icon: <Instagram className="h-4 w-4" />, href: 'https://www.instagram.com/zenvoa.technologies/' },
+  { id: '2', name: 'LinkedIn', icon: <Linkedin className="h-4 w-4" />, href: 'https://www.linkedin.com/company/zenova-technologies/' },
+  { id: '3', name: 'Github', icon: <Github className="h-4 w-4" />, href: 'https://github.com/zenvoatechnologies' },
 ];
 
 // Predetermined bubble configurations to avoid hydration mismatch
@@ -56,10 +56,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     message: '',
     projectType: [] as string[],
   });
+  const [messageError, setMessageError] = React.useState('');
+  const MIN_MESSAGE_LENGTH = 20;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    // Validate message length
+    if (name === 'message') {
+      if (value.length > 0 && value.length < MIN_MESSAGE_LENGTH) {
+        setMessageError(`Please enter at least ${MIN_MESSAGE_LENGTH} characters (${value.length}/${MIN_MESSAGE_LENGTH})`);
+      } else {
+        setMessageError('');
+      }
+    }
   };
 
   const handleCheckboxChange = (type: string, checked: boolean) => {
@@ -76,11 +87,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Validate message length before submission
+    if (formData.message.length < MIN_MESSAGE_LENGTH) {
+      setMessageError(`Please enter at least ${MIN_MESSAGE_LENGTH} characters`);
+      return;
+    }
+
     const success = await onSubmit?.(formData);
 
     // Reset form only if submission was successful
     if (success) {
       setFormData({ name: '', email: '', message: '', projectType: [] });
+      setMessageError('');
     }
   };
 
@@ -140,7 +158,34 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <Mail className="h-4 w-4" />
                 {contactEmail}
               </a>
-              <div className="flex items-center space-x-3 mt-4">
+
+              {/* Phone Call Option */}
+              <div className="mt-6 pt-6 border-t border-white/10">
+                <p className="text-muted-foreground mb-2">Or call us directly</p>
+                <div className="flex flex-col gap-2">
+                  <a
+                    href="tel:+919363978578"
+                    className="text-indigo-400 hover:text-indigo-300 hover:underline font-medium flex items-center gap-2 text-lg"
+                  >
+                    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    +91 93639 78578
+                  </a>
+                  <a
+                    href="tel:+917904729229"
+                    className="text-indigo-400 hover:text-indigo-300 hover:underline font-medium flex items-center gap-2 text-lg"
+                  >
+                    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    +91 79047 29229
+                  </a>
+                </div>
+                <p className="text-xs text-muted-foreground mt-2">Available Mon-Fri, 9AM-6PM IST</p>
+              </div>
+
+              <div className="flex items-center space-x-3 mt-6">
                 <span className="text-muted-foreground">OR</span>
                 {socialLinks.map((link) => (
                   <Button key={link.id} variant="outline" size="icon" asChild className="border-white/20 hover:bg-white/10">
@@ -174,11 +219,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   id="message"
                   name="message"
                   placeholder="Briefly describe your project idea..."
-                  className="min-h-[80px]"
+                  className={`min-h-[80px] ${messageError ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
                   value={formData.message}
                   onChange={handleChange}
                   required
                 />
+                <div className="flex justify-between items-center text-xs">
+                  {messageError ? (
+                    <span className="text-red-400 font-medium">{messageError}</span>
+                  ) : (
+                    <span className={`${formData.message.length >= MIN_MESSAGE_LENGTH ? 'text-green-400' : 'text-white/50'}`}>
+                      {formData.message.length >= MIN_MESSAGE_LENGTH ? '✓ ' : ''}
+                      {formData.message.length}/{MIN_MESSAGE_LENGTH} characters minimum
+                    </span>
+                  )}
+                </div>
               </div>
 
               <div className="space-y-4">

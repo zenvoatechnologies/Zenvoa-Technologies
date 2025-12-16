@@ -1,37 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zenvoa Technologies
+
+A modern web application built with Next.js (frontend) and Express (backend).
+
+## Project Structure
+
+```
+Zenvoa-Technologies/
+├── frontend/          # Next.js application
+├── backend/           # Express API server
+└── README.md          # This file
+```
 
 ## Getting Started
 
-First, run the development server:
+### Frontend (Next.js)
+
+The frontend is built with Next.js 16, React 19, and Tailwind CSS.
 
 ```bash
+cd frontend
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The frontend will be available at [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Available Scripts:**
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Backend (Express)
 
-## Learn More
+The backend is an Express API server with MongoDB integration.
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+cd backend
+npm install
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The backend API will be available at [http://localhost:5000](http://localhost:5000)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Available Scripts:**
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Compile TypeScript to JavaScript
+- `npm start` - Start production server
 
-## Deploy on Vercel
+## Development Workflow
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Start Backend First:**
+   ```bash
+   cd backend
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# Zenvoa-Technologies
+2. **Start Frontend:**
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+
+3. Open your browser to [http://localhost:3000](http://localhost:3000)
+
+## Environment Variables
+
+### Frontend
+Create a `.env.local` file in the `frontend` directory with necessary environment variables.
+
+### Backend
+Create a `.env` file in the `backend` directory with:
+- `MONGO_URI` - MongoDB connection string
+- `RESEND_API_KEY` - Resend API key for email service
+- Other required environment variables
+
+## Tech Stack
+
+### Frontend
+- **Framework:** Next.js 16 (App Router)
+- **UI Library:** React 19
+- **Styling:** Tailwind CSS 4
+- **Animations:** Framer Motion
+- **Form Handling:** React Hook Form + Zod
+- **UI Components:** Radix UI
+
+### Backend
+- **Runtime:** Node.js
+- **Framework:** Express
+- **Database:** MongoDB (Mongoose)
+- **Email:** Resend
+- **Validation:** Zod
+- **Language:** TypeScript
+
+## Deployment
+
+- **Frontend:** Deploy to Vercel (recommended for Next.js)
+- **Backend:** Deploy to your preferred Node.js hosting service
+
+## License
+
+MIT
