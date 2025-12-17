@@ -27,9 +27,11 @@ async function dbConnect() {
       bufferCommands: false,
     };
 
-    cached.promise = mongoose.connect(MONGODB_URI!, opts).then((mongoose) => {
-      cached.conn = mongoose;
-      return cached;
+    cached.promise = mongoose.connect(MONGODB_URI!, opts).then((mongooseInstance) => {
+      return {
+        conn: mongooseInstance,
+        promise: null
+      };
     });
   }
 
