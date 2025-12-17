@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Typewriter } from '@/components/ui/typewriter-text';
 import { Mail, Github, Linkedin, Instagram } from 'lucide-react';
 
 interface ContactSectionProps {
@@ -44,7 +45,7 @@ const bubbleConfigs = [
 
 export const ContactSection: React.FC<ContactSectionProps> = ({
   title = "We can turn your dream project into reality",
-  mainMessage = "Let's talk! 👋",
+  mainMessage = "Let's talk! ðŸ‘‹",
   contactEmail = "zenvoatechnologies@gmail.com",
   socialLinks = defaultSocialLinks,
   backgroundImageSrc = "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop",
@@ -140,10 +141,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       <div className="relative z-10 flex flex-col items-center justify-center w-full min-h-screen p-4 md:p-8 lg:p-12">
         {/* Main Section - Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-7xl p-4 md:p-8 rounded-xl">
-          {/* Left Side: Title */}
+          {/* Left Side: Title with Typewriter */}
           <div className="flex flex-col justify-center p-4 lg:p-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-lg max-w-lg">
-              {title}
+              <Typewriter
+                text={[
+                  "We can turn your dream project into reality",
+                  "We build exceptional digital experiences",
+                  "We bring your vision to life",
+                  "We create innovative solutions for your business"
+                ]}
+                speed={80}
+                deleteSpeed={40}
+                delay={2000}
+                loop={true}
+              />
             </h1>
           </div>
 
@@ -229,7 +241,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     <span className="text-red-400 font-medium">{messageError}</span>
                   ) : (
                     <span className={`${formData.message.length >= MIN_MESSAGE_LENGTH ? 'text-green-400' : 'text-white/50'}`}>
-                      {formData.message.length >= MIN_MESSAGE_LENGTH ? '✓ ' : ''}
+                      {formData.message.length >= MIN_MESSAGE_LENGTH ? 'âœ“ ' : ''}
                       {formData.message.length}/{MIN_MESSAGE_LENGTH} characters minimum
                     </span>
                   )}
@@ -285,3 +297,4 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     </section>
   );
 };
+

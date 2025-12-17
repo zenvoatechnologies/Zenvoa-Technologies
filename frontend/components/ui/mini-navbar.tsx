@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { ShaderAnimation } from './shader-animation';
 
 const AnimatedNavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
     const defaultTextColor = 'text-gray-300';
@@ -97,16 +98,26 @@ export function MiniNavbar() {
 
                 {/* The Mini Navbar Pill - Centered */}
                 <header className={`
+                        relative overflow-hidden
                         flex flex-col items-center
-                        px-6 py-2 backdrop-blur-md
+                        px-6 py-2
                         ${headerShapeClass}
-                        border border-white/10 bg-black/80
+                        border border-white/10
                         w-auto
                         transition-[border-radius] duration-300 ease-in-out
                         shadow-2xl
                        `}>
 
-                    <div className="flex items-center justify-between gap-x-6 sm:gap-x-8">
+                    {/* Shader Animation Background */}
+                    <div className="absolute inset-0 opacity-30 pointer-events-none">
+                        <ShaderAnimation />
+                    </div>
+
+                    {/* Backdrop blur overlay */}
+                    <div className="absolute inset-0 backdrop-blur-md bg-black/60 pointer-events-none"></div>
+
+                    {/* Content - with relative positioning to appear above shader */}
+                    <div className="relative z-10 flex items-center justify-between gap-x-6 sm:gap-x-8">
                         {/* Removed internal small logo since we have the big one outside */}
 
                         <nav className="hidden sm:flex items-center space-x-6 text-sm">
@@ -130,7 +141,7 @@ export function MiniNavbar() {
                         </button>
                     </div>
 
-                    <div className={`sm:hidden flex flex-col items-center w-full transition-all ease-in-out duration-300 overflow-hidden
+                    <div className={`relative z-10 sm:hidden flex flex-col items-center w-full transition-all ease-in-out duration-300 overflow-hidden
                             ${isOpen ? 'max-h-[1000px] opacity-100 pt-6 pb-2' : 'max-h-0 opacity-0 pt-0 pointer-events-none'}`}>
                         <nav className="flex flex-col items-center space-y-4 text-base w-full">
                             {navLinksData.map((link) => (
@@ -148,3 +159,4 @@ export function MiniNavbar() {
         </div>
     );
 }
+

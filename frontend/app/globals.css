@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: 'Inter', sans-serif;
+  --font-sans: 'Outfit', sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -65,4 +65,19 @@ input {
 
 input:autofill {
   background-color: transparent !important;
+}
+
+/* Diamond rotation animation for AnimatedLetterText component */
+@keyframes diamond-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-diamond-rotate {
+  animation: diamond-rotate 3s linear infinite;
 }

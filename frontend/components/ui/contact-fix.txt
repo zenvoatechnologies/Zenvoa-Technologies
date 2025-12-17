@@ -1,0 +1,14 @@
+﻿            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-lg max-w-lg">
+              <Typewriter
+                text={[
+                  "We can turn your dream project into reality",
+                  "We build exceptional digital experiences",
+                  "We bring your vision to life",
+                  "We create innovative solutions for your business"
+                ]}
+                speed={80}
+                deleteSpeed={40}
+                delay={2000}
+                loop={true}
+              />
+            </h1>
