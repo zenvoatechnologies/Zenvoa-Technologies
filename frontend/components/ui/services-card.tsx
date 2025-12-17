@@ -6,10 +6,7 @@ import { ArrowRight, Code, Palette, Search } from "lucide-react";
 import { cn } from "@/lib/utils"; // Assuming you have a `cn` utility from shadcn/ui
 
 // Shadcn UI Carousel Imports
-import useEmblaCarousel, {
-    type UseEmblaCarouselType,
-    type EmblaOptionsType,
-} from "embla-carousel-react";
+import useEmblaCarousel from "embla-carousel-react";
 import { Button } from "@/components/ui/button"; // Assuming you have a Button component
 
 // --- Carousel Context ---
