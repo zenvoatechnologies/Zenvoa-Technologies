@@ -7,13 +7,13 @@ import { cn } from "@/lib/utils"; // Assuming you have a `cn` utility from shadc
 
 // Shadcn UI Carousel Imports
 import useEmblaCarousel, {
-    type EmblaCarouselType,
+    type UseEmblaCarouselType,
     type EmblaOptionsType,
 } from "embla-carousel-react";
 import { Button } from "@/components/ui/button"; // Assuming you have a Button component
 
 // --- Carousel Context ---
-type CarouselApi = EmblaCarouselType | undefined;
+type CarouselApi = ReturnType<typeof useEmblaCarousel>[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
 type CarouselOptions = UseCarouselParameters[0];
 type CarouselPlugin = UseCarouselParameters[1];
