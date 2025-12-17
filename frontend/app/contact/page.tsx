@@ -15,7 +15,8 @@ export default function ContactPage() {
         setIsSubmitting(true);
 
         try {
-            const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+            // Remove trailing slash from API URL to prevent double slashes
+            const apiUrl = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000').replace(/\/$/, '');
 
             const response = await fetch(`${apiUrl}/api/contact`, {
                 method: 'POST',
