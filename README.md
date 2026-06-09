@@ -2,6 +2,12 @@
 
 A modern web application built with Next.js (frontend) and Express (backend).
 
+## 🚀 Live Demo
+
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://zenvoa-technologies.vercel.app/)
+
+**Live URL:** [https://zenvoa-technologies.vercel.app/](https://zenvoa-technologies.vercel.app/)
+
 ## Project Structure
 
 ```
@@ -95,7 +101,7 @@ Create a `.env` file in the `backend` directory with:
 
 ## Deployment
 
-- **Frontend:** Deploy to Vercel (recommended for Next.js)
+- **Frontend (Live):** [https://zenvoa-technologies.vercel.app/](https://zenvoa-technologies.vercel.app/) — Deployed on Vercel
 - **Backend:** Deploy to your preferred Node.js hosting service
 
 ## License
